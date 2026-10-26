@@ -29,26 +29,28 @@ public class Jogo {
     }
 
     public void jogar() {
-        Scanner entrada = new Scanner(System.in);
         System.out.println("=== MINI RPG: POLIMORFISMO ===");
         System.out.println("Mova com W/A/S/D + Enter. Q para sair.\n");
 
-        while (jogador.estaVivo()) {
-            desenharMapa();
-            System.out.println(jogador.status());
-            System.out.print("> ");
-            if (!entrada.hasNextLine()) {
-                break;
-            }
-            String comando = entrada.nextLine().trim().toLowerCase();
-            if (comando.equals("q")) {
-                break;
-            }
-            mover(comando);
+        // try-with-resources: o Scanner e fechado automaticamente ao sair do bloco
+        try (Scanner entrada = new Scanner(System.in)) {
+            while (jogador.estaVivo()) {
+                desenharMapa();
+                System.out.println(jogador.status());
+                System.out.print("> ");
+                if (!entrada.hasNextLine()) {
+                    break;
+                }
+                String comando = entrada.nextLine().trim().toLowerCase();
+                if (comando.equals("q")) {
+                    break;
+                }
+                mover(comando);
 
-            if (!temInimigoVivo()) {
-                System.out.println("\nVoce derrotou todos os monstros! VITORIA!");
-                return;
+                if (!temInimigoVivo()) {
+                    System.out.println("\nVoce derrotou todos os monstros! VITORIA!");
+                    return;
+                }
             }
         }
         if (!jogador.estaVivo()) {
