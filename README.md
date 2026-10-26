@@ -122,3 +122,7 @@ Dica: para cada novo personagem, crie uma classe nova, escolha de quem ela herda
 - Novos tipos entram no jogo sem alterar o código existente.
 
 Próxima missão: interfaces e novos poderes.
+
+## Licença
+
+Distribuído sob a licença MIT. Você pode usar, copiar, modificar e compartilhar este material livremente, desde que mantenha o aviso de copyright. O material é fornecido "como está", sem garantias, e o autor não se responsabiliza pelo seu uso. Veja [LICENSE](LICENSE).
