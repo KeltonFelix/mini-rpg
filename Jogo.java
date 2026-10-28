@@ -19,13 +19,17 @@ public class Jogo {
         // Tudo e guardado como "Entidade": o tipo real so aparece na hora de interagir.
         mundo.add(new Npc("Prof. Carvalho", 2, 1, "Cuidado com o Dragao la no canto!"));
         mundo.add(new Bau(5, 2, 15));
+        mundo.add(new Bau(9, 6, 30));
         mundo.add(new Slime(4, 4));
         mundo.add(new Slime(8, 1));
-        mundo.add(new Bau(9, 6, 30));
         mundo.add(new Dragao(11, 7));
+        mundo.add(new Curandeiro(1, 5));
 
-        // ATIVIDADE (parte 1): descomente depois de implementar o Curandeiro
-        // mundo.add(new Curandeiro(1, 5));
+        // ===== ATIVIDADE 2 =====
+        mundo.add(new Armadilha(3, 3));      // Fácil
+        mundo.add(new Mercador(6, 4));       // Médio
+        mundo.add(new Chefe(10, 6));         // Médio
+        mundo.add(new Treinador(7, 5));      // Bônus
     }
 
     public void jogar() {
@@ -79,7 +83,6 @@ public class Jogo {
         Entidade alvo = entidadeEm(novoX, novoY);
         if (alvo != null) {
             // >>> O MOMENTO DO POLIMORFISMO <<<
-            // O Java decide em tempo de execucao qual interagir() chamar.
             alvo.interagir(jogador);
             System.out.println();
         }
@@ -110,7 +113,7 @@ public class Jogo {
                 char c = '.';
                 Entidade e = entidadeEm(x, y);
                 if (e != null) {
-                    c = e.simbolo(); // <- tambem polimorfico
+                    c = e.simbolo();
                 }
                 if (jogador.getX() == x && jogador.getY() == y) {
                     c = '@';

@@ -1,12 +1,6 @@
 /**
  * ATIVIDADE DOS ALUNOS (parte 1):
  * O Curandeiro cura o jogador de graca na primeira vez e depois cobra 5 de ouro.
- *
- * Passos:
- *  1. Faca esta classe estender Entidade (ja esta).
- *  2. Implemente interagir(): use jogador.curar(...) e jogador.gastarOuro(...).
- *  3. Sobrescreva simbolo() para devolver 'C'.
- *  4. Descomente a linha do Curandeiro em Jogo.java e teste.
  */
 public class Curandeiro extends Entidade {
 
@@ -18,9 +12,25 @@ public class Curandeiro extends Entidade {
 
     @Override
     public void interagir(Jogador jogador) {
-        // TODO: implementar a cura (gratis na primeira vez, 5 de ouro depois)
-        System.out.println("[Curandeiro] (ainda nao implementado)");
+        if (primeiraVez) {
+            // Cura grátis na primeira visita
+            System.out.println("[Curandeiro] \"Primeira consulta é de graça!\"");
+            jogador.curar(15);
+            primeiraVez = false;
+        } else {
+            // A partir da segunda visita cobra 5 de ouro
+            System.out.println("[Curandeiro] \"Custa 5 de ouro para curar.\"");
+            if (jogador.gastarOuro(5)) {
+                jogador.curar(15);
+                System.out.println("Você foi curado!");
+            } else {
+                System.out.println("Você não tem ouro suficiente!");
+            }
+        }
     }
 
-    // TODO: sobrescrever simbolo() para devolver 'C'
+    @Override
+    public char simbolo() {
+        return 'C';
+    }
 }

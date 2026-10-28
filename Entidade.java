@@ -3,7 +3,7 @@
  * Cada tipo de entidade reage de um jeito diferente quando o jogador interage com ela.
  * Isso e POLIMORFISMO: mesma chamada (interagir), comportamentos diferentes.
  */
-public abstract class Entidade {
+public abstract class Entidade implements Interagivel {
 
     protected String nome;
     protected int x;
